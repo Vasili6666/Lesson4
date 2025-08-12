@@ -1,15 +1,27 @@
+import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selenide.executeJavaScript;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selenide.*;
 
 public class CheckExistingCodeForJUnite5 {
     @Test
     void fillFormTest() {
-        open("/automation-practice-form");
+        open("https://github.com/");
 
-        // Удаляем мешающие элементы
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
+        // Открыть сайт и кликнуть на поле поиска
+        $("span[data-target='qbsearch-input.inputButtonText']").shouldBe(visible).click();
+
+        // Вести слово selenide
+        $("#query-builder-test").setValue("selenide").pressEnter();
+
+        // Найти и нажать selenide/selenide
+        $("span.search-match").shouldHave(text("selenide/selenide")).click();
+
+
+        //sleep(5000);
+
+        //Selenide.closeWebDriver();
     }
 }
