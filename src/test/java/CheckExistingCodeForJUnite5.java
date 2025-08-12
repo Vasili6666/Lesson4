@@ -1,8 +1,5 @@
-import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.Test;
-
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class CheckExistingCodeForJUnite5 {
@@ -19,8 +16,11 @@ public class CheckExistingCodeForJUnite5 {
         // Найти и нажать selenide/selenide
         $("span.search-match").shouldHave(text("selenide/selenide")).click();
 
+        // Поиск и нажатие Wiki
+        $("#wiki-tab").click();
 
-        //sleep(5000);
+
+        sleep(5000);
 
         //Selenide.closeWebDriver();
     }
