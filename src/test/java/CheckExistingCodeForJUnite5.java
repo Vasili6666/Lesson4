@@ -1,3 +1,4 @@
+import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
@@ -19,12 +20,14 @@ public class CheckExistingCodeForJUnite5 {
 
         // Поиск и нажатие Wiki
         $("#wiki-tab").click();
+        // Поиск и нажатие Soft assertions
         $(byText("Soft assertions")).click();
 
+        //Проверка наличия в "wiki-body" текста "Using JUnit5"
+        $("#wiki-body").shouldHave(text("Using JUnit5"));
 
+        //sleep(5000);
 
-        sleep(5000);
-
-        //Selenide.closeWebDriver();
+        Selenide.closeWebDriver();
     }
 }
