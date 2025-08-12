@@ -4,7 +4,7 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class CheckExistingCodeForJUnite5 {
+public class CheckExistingCodeForJUnite5Test {
     @Test
     void fillFormTest() {
         open("https://github.com/");
@@ -24,7 +24,20 @@ public class CheckExistingCodeForJUnite5 {
         $(byText("Soft assertions")).click();
 
         //Проверка наличия в "wiki-body" текста "Using JUnit5"
-        $("#wiki-body").shouldHave(text("Using JUnit5"));
+        //$("#wiki-body").shouldHave(text("ExtendWith"));
+        String expectedCode = """
+    @ExtendWith({SoftAssertsExtension.class})
+    class Tests {
+      @Test
+      void test() {
+        Configuration.assertionMode = SOFT;
+        open("page.html");
+        $("#first").should(visible).click();
+        $("#second").should(visible).click();
+      }
+    }""";
+
+        $("#wiki-body").shouldHave(text(expectedCode));
 
         //sleep(5000);
 
