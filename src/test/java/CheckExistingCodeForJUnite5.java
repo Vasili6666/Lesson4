@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class CheckExistingCodeForJUnite5 {
@@ -18,6 +19,8 @@ public class CheckExistingCodeForJUnite5 {
 
         // Поиск и нажатие Wiki
         $("#wiki-tab").click();
+        $(byText("Soft assertions")).click();
+
 
 
         sleep(5000);
